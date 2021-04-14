@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://koda.nu/simple.js">
+
+    updatesPerSecond = 120;
+
+    var Z1 = 0;
+    var Z2 = 0;
+    var Z3 = 0;
+    var Z4 = 0;
+    var Z5 = 0;
+
+    var Z12 = 0;
+    var Z22 = 0;
+    var Z32 = 0;
+    var Z42 = 0;
+    var Z52 = 0;
+
+    var Z13 = 0;
+    var Z23 = 0;
+    var Z33 = 0;
+    var Z43 = 0;
+    var Z53 = 0;
+
+    var Z14 = 0;
+    var Z24 = 0;
+    var Z34 = 0;
+    var Z44 = 0;
+    var Z54 = 0;
+
+    var Z15 = 0;
+    var Z25 = 0;
+    var Z35 = 0;
+    var Z45 = 0;
+    var Z55 = 0;
+
+    var Z16 = 0;
+    var Z26 = 0;
+    var Z36 = 0;
+    var Z46 = 0;
+    var Z56 = 0;
+
+    var Z17 = 0;
+    var Z27 = 0;
+    var Z37 = 0;
+    var Z47 = 0;
+    var Z57 = 0;
+
+    var liv = 100;
+
+    var Test = 0;
+    var Test2 = 0;
+
+    // Förberedande för Zombies.
+    var zombies = [];
+    var zombieSpeed = 0.5;
+    var antalZombies = 10;
+    var zombieHP = 20;
+    var i = 0;
+    var Zrad = 0;
+    var ZX = 1100;
+    while (i < antalZombies) {
+      Zrad = random(0, 4);
+      if (Zrad == 0) { zombies.push({ x: ZX, y: 150, HP: zombieHP, speed: zombieSpeed, Lz: 1 }) }
+      if (Zrad == 1) { zombies.push({ x: ZX, y: 250, HP: zombieHP, speed: zombieSpeed, Lz: 2 }) }
+      if (Zrad == 2) { zombies.push({ x: ZX, y: 350, HP: zombieHP, speed: zombieSpeed, Lz: 3 }) }
+      if (Zrad == 3) { zombies.push({ x: ZX, y: 450, HP: zombieHP, speed: zombieSpeed, Lz: 4 }) }
+      if (Zrad == 4) { zombies.push({ x: ZX, y: 550, HP: zombieHP, speed: zombieSpeed, Lz: 5 }) }
+      ZX += 100;
+      i += 1;
+    }
+    // Slut (Zombies).:
+
+    // Pengar
+    var Coin = 100
+
+    // Pengar slut.
+
+    // Text Torn.
+    var Torn = [];
+    var antalTorn = 0;
+    var GG = 0;
+    var tid = 0;
+    var Torn1 = []
+
+    // Slut (Torn).
+
+    // Text Skott
+    var skott = [];
+    var SkottSpeed = 1;
+    var antalSkott = 0;
+
+    // Slut (Skott)
+
+
+
+    function update() {
+      clearScreen();
+
+      // placera Torn.
+
+      if (tid > 0) { tid -= 1 }
+      if (tid < 1) {
+        if (keyboard.t) {
+          if (mouse.left) {
+            if (mouse.y > 140 && mouse.y < 239 && mouse.x > 100 && mouse.x < 199 && Z1 == 0) {
+              Z1 += 1;
+              Torn.push({ x: 150, y: 190, HP: 20, Skott2: 0, Lp: 1 })
+              skott.push({ x: 170, y: 182, s: SkottSpeed, Ls: 1 })
+              antalSkott += 1;
+              antalTorn += 1;
+            }
+            if (mouse.y > 240 && mouse.y < 339 && mouse.x > 100 && mouse.x < 199 && Z2 == 0) {
+              Z2 += 1;
+              Torn.push({ x: 150, y: 290 })
+              antalTorn += 1;
+            }
+            if (mouse.y > 340 && mouse.y < 439 && mouse.x > 100 && mouse.x < 199 && Z3 == 0) {
+              Z3 += 1;
+              Torn.push({ x: 150, y: 390 })
+              antalTorn += 1;
+            }
+            if (mouse.y > 440 && mouse.y < 539 && mouse.x > 100 && mouse.x < 199 && Z4 == 0) {
+              Z4 += 1;
+              Torn.push({ x: 150, y: 490 })
+              antalTorn += 1;
+            }
+            if (mouse.y > 540 && mouse.y < 639 && mouse.x > 100 && mouse.x < 199 && Z5 == 0) {
+              Z5 += 1;
+              Torn.push({ x: 150, y: 590 })
+              antalTorn += 1;
+            }
+
+            if (mouse.y > 140 && mouse.y < 239 && mouse.x > 200 && mouse.x < 299 && Z12 == 0) { Z12 += 1 }
+            if (mouse.y > 240 && mouse.y < 339 && mouse.x > 200 && mouse.x < 299 && Z22 == 0) { Z22 += 1 }
+            if (mouse.y > 340 && mouse.y < 439 && mouse.x > 200 && mouse.x < 299 && Z32 == 0) { Z32 += 1 }
+            if (mouse.y > 440 && mouse.y < 539 && mouse.x > 200 && mouse.x < 299 && Z42 == 0) { Z42 += 1 }
+            if (mouse.y > 540 && mouse.y < 639 && mouse.x > 200 && mouse.x < 299 && Z52 == 0) { Z52 += 1 }
+
+            if (mouse.y > 140 && mouse.y < 239 && mouse.x > 300 && mouse.x < 399 && Z13 == 0) { Z13 += 1 }
+            if (mouse.y > 240 && mouse.y < 339 && mouse.x > 300 && mouse.x < 399 && Z23 == 0) { Z23 += 1 }
+            if (mouse.y > 340 && mouse.y < 439 && mouse.x > 300 && mouse.x < 399 && Z33 == 0) { Z33 += 1 }
+            if (mouse.y > 440 && mouse.y < 539 && mouse.x > 300 && mouse.x < 399 && Z43 == 0) { Z43 += 1 }
+            if (mouse.y > 540 && mouse.y < 639 && mouse.x > 300 && mouse.x < 399 && Z53 == 0) { Z53 += 1 }
+
+            if (mouse.y > 140 && mouse.y < 239 && mouse.x > 400 && mouse.x < 499 && Z14 == 0) { Z14 += 1 }
+            if (mouse.y > 240 && mouse.y < 339 && mouse.x > 400 && mouse.x < 499 && Z24 == 0) { Z24 += 1 }
+            if (mouse.y > 340 && mouse.y < 439 && mouse.x > 400 && mouse.x < 499 && Z34 == 0) { Z34 += 1 }
+            if (mouse.y > 440 && mouse.y < 539 && mouse.x > 400 && mouse.x < 499 && Z44 == 0) { Z44 += 1 }
+            if (mouse.y > 540 && mouse.y < 639 && mouse.x > 400 && mouse.x < 499 && Z54 == 0) { Z54 += 1 }
+
+            if (mouse.y > 140 && mouse.y < 239 && mouse.x > 500 && mouse.x < 599 && Z15 == 0) { Z15 += 1 }
+            if (mouse.y > 240 && mouse.y < 339 && mouse.x > 500 && mouse.x < 599 && Z25 == 0) { Z25 += 1 }
+            if (mouse.y > 340 && mouse.y < 439 && mouse.x > 500 && mouse.x < 599 && Z35 == 0) { Z35 += 1 }
+            if (mouse.y > 440 && mouse.y < 539 && mouse.x > 500 && mouse.x < 599 && Z45 == 0) { Z45 += 1 }
+            if (mouse.y > 540 && mouse.y < 639 && mouse.x > 500 && mouse.x < 599 && Z55 == 0) { Z55 += 1 }
+
+            if (mouse.y > 140 && mouse.y < 239 && mouse.x > 600 && mouse.x < 699 && Z16 == 0) { Z16 += 1 }
+            if (mouse.y > 240 && mouse.y < 339 && mouse.x > 600 && mouse.x < 699 && Z26 == 0) { Z26 += 1 }
+            if (mouse.y > 340 && mouse.y < 439 && mouse.x > 600 && mouse.x < 699 && Z36 == 0) { Z36 += 1 }
+            if (mouse.y > 440 && mouse.y < 539 && mouse.x > 600 && mouse.x < 699 && Z46 == 0) { Z46 += 1 }
+            if (mouse.y > 540 && mouse.y < 639 && mouse.x > 600 && mouse.x < 699 && Z56 == 0) { Z56 += 1 }
+
+            if (mouse.y > 140 && mouse.y < 239 && mouse.x > 700 && mouse.x < 799 && Z17 == 0) { Z17 += 1 }
+            if (mouse.y > 240 && mouse.y < 339 && mouse.x > 700 && mouse.x < 799 && Z27 == 0) { Z27 += 1 }
+            if (mouse.y > 340 && mouse.y < 439 && mouse.x > 700 && mouse.x < 799 && Z37 == 0) { Z37 += 1 }
+            if (mouse.y > 440 && mouse.y < 539 && mouse.x > 700 && mouse.x < 799 && Z47 == 0) { Z47 += 1 }
+            if (mouse.y > 540 && mouse.y < 639 && mouse.x > 700 && mouse.x < 799 && Z57 == 0) { Z57 += 1 }
+
+
+            tid = 50
+          }
+        }
+      }
+
+      // placera Torn slut
+
+      // Text Barna cch statiska objekt.
+      rectangle(100, 140, 100, 100, "green");
+      rectangle(100, 240, 100, 100, mixColor(0, 150, 0));;
+      rectangle(100, 340, 100, 100, "green");
+      rectangle(100, 440, 100, 100, mixColor(0, 150, 0));
+      rectangle(100, 540, 100, 100, "green");
+
+      rectangle(200, 140, 100, 100, mixColor(0, 150, 0));
+      rectangle(200, 240, 100, 100, "green");;
+      rectangle(200, 340, 100, 100, mixColor(0, 150, 0));
+      rectangle(200, 440, 100, 100, "green");
+      rectangle(200, 540, 100, 100, mixColor(0, 150, 0));
+
+      rectangle(300, 140, 100, 100, "green");
+      rectangle(300, 240, 100, 100, mixColor(0, 150, 0));;
+      rectangle(300, 340, 100, 100, "green");
+      rectangle(300, 440, 100, 100, mixColor(0, 150, 0));
+      rectangle(300, 540, 100, 100, "green");
+
+      rectangle(400, 140, 100, 100, mixColor(0, 150, 0));
+      rectangle(400, 240, 100, 100, "green");;
+      rectangle(400, 340, 100, 100, mixColor(0, 150, 0));
+      rectangle(400, 440, 100, 100, "green");
+      rectangle(400, 540, 100, 100, mixColor(0, 150, 0));
+
+      rectangle(500, 140, 100, 100, "green");
+      rectangle(500, 240, 100, 100, mixColor(0, 150, 0));;
+      rectangle(500, 340, 100, 100, "green");
+      rectangle(500, 440, 100, 100, mixColor(0, 150, 0));
+      rectangle(500, 540, 100, 100, "green");
+
+      rectangle(600, 140, 100, 100, mixColor(0, 150, 0));
+      rectangle(600, 240, 100, 100, "green");;
+      rectangle(600, 340, 100, 100, mixColor(0, 150, 0));
+      rectangle(600, 440, 100, 100, "green");
+      rectangle(600, 540, 100, 100, mixColor(0, 150, 0));
+
+      rectangle(700, 140, 100, 100, "green");
+      rectangle(700, 240, 100, 100, mixColor(0, 150, 0));;
+      rectangle(700, 340, 100, 100, "green");
+      rectangle(700, 440, 100, 100, mixColor(0, 150, 0));
+      rectangle(700, 540, 100, 100, "green");
+
+      rectangle(800, 140, 100, 100, mixColor(0, 150, 0));
+      rectangle(800, 240, 100, 100, "green");;
+      rectangle(800, 340, 100, 100, mixColor(0, 150, 0));
+      rectangle(800, 440, 100, 100, "green");
+      rectangle(800, 540, 100, 100, mixColor(0, 150, 0));
+
+      rectangle(900, 140, 100, 100, "green");
+      rectangle(900, 240, 100, 100, mixColor(0, 150, 0));;
+      rectangle(900, 340, 100, 100, "green");
+      rectangle(900, 440, 100, 100, mixColor(0, 150, 0));
+      rectangle(900, 540, 100, 100, "green");
+
+      rectangle(1000, 140, 100, 100, mixColor(0, 150, 0));
+      rectangle(1000, 240, 100, 100, "green");;
+      rectangle(1000, 340, 100, 100, mixColor(0, 150, 0));
+      rectangle(1000, 440, 100, 100, "green");
+      rectangle(1000, 540, 100, 100, mixColor(0, 150, 0));
+
+      rectangle(0, 140, 100, 100, mixColor(150, 150, 150));
+      rectangle(0, 240, 100, 100, "gray");;
+      rectangle(0, 340, 100, 100, mixColor(150, 150, 150));
+      rectangle(0, 440, 100, 100, "gray");
+      rectangle(0, 540, 100, 100, mixColor(150, 150, 150));
+
+      picture(25, 175, "/img/2357855_brains-tf2-heavy-pixel-art-png-download2.png")
+      picture(25, 275, "/img/2357855_brains-tf2-heavy-pixel-art-png-download2.png")
+      picture(25, 375, "/img/2357855_brains-tf2-heavy-pixel-art-png-download2.png")
+      picture(25, 475, "/img/2357855_brains-tf2-heavy-pixel-art-png-download2.png")
+      picture(25, 575, "/img/2357855_brains-tf2-heavy-pixel-art-png-download2.png")
+
+
+      // Slut (Barna).
+
+      // Torn
+
+      var i = 0;
+      while (i < antalTorn) {
+        var Tornet = Torn[i];
+        picture(Tornet.x - 45, Tornet.y - 45, "/img/kisspng-plants-vs-zombies-garden-warfare-pixel-art-peash-pea-shooter-5b2eebc047c778.png");
+        i += 1;
+      }
+
+      text(20, 80, 20, antalTorn, "black");
+      text(20, 110, 20, Test, "black");
+
+      // Torn slut
+
+      // Skott
+
+      var i = 0;
+      while (i < antalSkott) {
+        var Skottet = skott[i];
+        if (Test == 1) {
+          circle(Skottet.x, Skottet.y, 5, "black");
+          Skottet.x += 5;
+          for (var q = 0; q < zombies.length; q++) {
+            if (zombies[q].Lz == Skottet.Ls) {
+              if (distance(Skottet.x, zombies[q].x) < 50) {
+                zombies[q].HP -= 1;
+                
+                break;  
+              }
+              Test2 = zombies[q].x;
+            }
+          }
+        }
+        i += 1;
+      }
+
+      // Slut Skott
+
+      // Zombies
+      var i = 0;
+      while (i < antalZombies) {
+        var zombie = zombies[i];
+        if (zombie.HP < 1) { break }
+        text(zombie.x + 20, zombie.y - 10, 15, zombie.HP, "black");
+        picture(zombie.x, zombie.y, "/img/108-1086909_zombies-peashooter-pixel-minecraft-plants-vs-zombies-pixel.png");
+        zombie.x -= zombieSpeed;
+        if (zombie.x < 1100) {
+          for (var q = 0; q < Torn.length; q++) {
+            if (Torn[q].Lp == zombie.Lz) {
+              Test = 1;
+
+              break;
+            }
+          }
+        }
+        i += 1;
+      }
+
+      // Slut (Zombies)
+
+
+
+
+
+
+
+
+
+
+
+      text(20, 40, 20, Coin, "black");
+      text(20, 700, 20, antalSkott, "black");
+      text(20, 730, 20, Test2, "black");
+
+
+
+    }
+
+  </script>
+</body>
+
+</html>
