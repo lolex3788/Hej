@@ -56,6 +56,12 @@
     var Z47 = 0;
     var Z57 = 0;
 
+    L1 = 0;
+    L2 = 0;
+    L3 = 0;
+    L4 = 0;
+    L5 = 0; 
+
     var liv = 100;
 
     var Test = 0;
@@ -116,28 +122,36 @@
             if (mouse.y > 140 && mouse.y < 239 && mouse.x > 100 && mouse.x < 199 && Z1 == 0) {
               Z1 += 1;
               Torn.push({ x: 150, y: 190, HP: 20, Skott2: 0, Lp: 1 })
-              skott.push({ x: 170, y: 182, s: SkottSpeed, Ls: 1 })
+              skott.push({ x: 170, y: 182, s: SkottSpeed, Ls: 1, SSTimer: 0 })
               antalSkott += 1;
               antalTorn += 1;
             }
             if (mouse.y > 240 && mouse.y < 339 && mouse.x > 100 && mouse.x < 199 && Z2 == 0) {
               Z2 += 1;
-              Torn.push({ x: 150, y: 290 })
+              Torn.push({ x: 150, y: 290, HP: 20, Skott2: 0, Lp: 2 })
+              skott.push({ x: 170, y: 282, s: SkottSpeed, Ls: 2, SSTimer: 0 })
+              antalSkott += 1;
               antalTorn += 1;
             }
             if (mouse.y > 340 && mouse.y < 439 && mouse.x > 100 && mouse.x < 199 && Z3 == 0) {
               Z3 += 1;
-              Torn.push({ x: 150, y: 390 })
+              Torn.push({ x: 150, y: 390, HP: 20, Skott2: 0, Lp: 3 })
+              skott.push({ x: 170, y: 382, s: SkottSpeed, Ls: 3, SSTimer: 0 })
+              antalSkott += 1;
               antalTorn += 1;
             }
             if (mouse.y > 440 && mouse.y < 539 && mouse.x > 100 && mouse.x < 199 && Z4 == 0) {
               Z4 += 1;
-              Torn.push({ x: 150, y: 490 })
+              Torn.push({ x: 150, y: 490, HP: 20, Skott2: 0, Lp: 4 })
+              skott.push({ x: 170, y: 482, s: SkottSpeed, Ls: 4, SSTimer: 0 })
+              antalSkott += 1;
               antalTorn += 1;
             }
             if (mouse.y > 540 && mouse.y < 639 && mouse.x > 100 && mouse.x < 199 && Z5 == 0) {
               Z5 += 1;
-              Torn.push({ x: 150, y: 590 })
+              Torn.push({ x: 150, y: 590, HP: 20, Skott2: 0, Lp: 5 })
+              skott.push({ x: 170, y: 582, s: SkottSpeed, Ls: 5, SSTimer: 0 })
+              antalSkott += 1;
               antalTorn += 1;
             }
 
@@ -259,7 +273,7 @@
       picture(25, 575, "/img/2357855_brains-tf2-heavy-pixel-art-png-download2.png")
 
 
-      // Slut (Barna).
+      // Slut (Barna och statiska objekt).
 
       // Torn
 
@@ -285,17 +299,19 @@
           Skottet.x += 5;
           for (var q = 0; q < zombies.length; q++) {
             if (zombies[q].Lz == Skottet.Ls) {
-              if (distance(Skottet.x, zombies[q].x) < 50) {
+              if (distance(Skottet.x, Skottet.y, zombies[q].x, zombies[q].y) < 50 && Skottet.SSTimer < 0) {
                 zombies[q].HP -= 1;
-                
+                Skottet.SSTimer = 20;
+
                 break;  
               }
-              Test2 = zombies[q].x;
             }
           }
         }
+        Skottet.SSTimer -= 1;
         i += 1;
       }
+      
 
       // Slut Skott
 
@@ -310,8 +326,11 @@
         if (zombie.x < 1100) {
           for (var q = 0; q < Torn.length; q++) {
             if (Torn[q].Lp == zombie.Lz) {
-              Test = 1;
-
+              if (Torn[q].Lp == 1) {L1 = 1}
+              else if (Torn[q].Lp == 2) {L2 = 1}
+              else if (Torn[q].Lp == 3) {L3 = 1}
+              else if (Torn[q].Lp == 4) {L4 = 1}
+              else if (Torn[q].Lp == 5) {L5 = 1}
               break;
             }
           }
@@ -334,6 +353,12 @@
       text(20, 40, 20, Coin, "black");
       text(20, 700, 20, antalSkott, "black");
       text(20, 730, 20, Test2, "black");
+
+      text(100, 20, 20, L1, "black");
+      text(100, 50, 20, L2, "black");
+      text(100, 80, 20, L3, "black");
+      text(100, 110, 20, L4, "black");
+      text(100, 140, 20, L5, "black");
 
 
 
